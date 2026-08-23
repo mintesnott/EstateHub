@@ -48,9 +48,21 @@ export const registerUser = async (data: RegisterInput) => {
 export const loginUser = async (data: LoginInput) => {
 
   //Find user by email
+  // const user = await prisma.user.findUnique({
+  //   where: { email: data.email },
+  // });
+
   const user = await prisma.user.findUnique({
-    where: { email: data.email },
-  });
+  where: { email: data.email },
+});
+
+console.log("LOGIN DEBUG:", {
+  email: data.email,
+  userFound: !!user,
+  role: user?.role,
+  hashPrefix: user?.passwordHash?.slice(0, 20),
+  hashLength: user?.passwordHash?.length,
+});
 
   if (!user) {
     throw new UnauthenticatedError("Invalid email or password");
