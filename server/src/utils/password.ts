@@ -1,6 +1,6 @@
 import argon2 from "argon2";
-import { asyncHandler } from "../middleware/asyncHandler";
-import { UnauthenticatedError } from "../errors";
+import { asyncHandler } from "../middleware/asyncHandler.js";
+import { UnauthenticatedError } from "../errors/index.js";
 
 
 export const hashPassword =  async (password: string): Promise<string> => {

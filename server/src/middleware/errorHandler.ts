@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
-import { Prisma } from "../generated/prisma/client";
-import { CustomAPIError } from "../errors";
+import { Prisma } from "../generated/prisma/client.js";
+import { CustomAPIError } from "../errors/index.js";
 
 import { MulterError } from "multer";
 

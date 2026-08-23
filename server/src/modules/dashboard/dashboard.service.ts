@@ -1,4 +1,4 @@
-import prisma from "../../config/database";
+import prisma from "../../config/database.js";
 
 export const getAgentDashboard = async (agentId: string) => {
   const propertiesGroupedByStatus = await prisma.property.groupBy({
