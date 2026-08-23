@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: estatehub-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: DIRECT_DATABASE_URL
+        sync: false
+
+      - key: JWT_SECRET
+        sync: false
+
+      - key: DEFAULT_AGENT_TEMP_PASSWORD
+        sync: false
+
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+
+      - key: CLOUDINARY_API_KEY
+        sync: false
+
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      - key: CLIENT_URL
+        sync: false
+
+  - type: web
+    name: estatehub-client
+    runtime: static
+    rootDir: client
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false

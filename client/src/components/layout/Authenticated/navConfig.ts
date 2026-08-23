@@ -45,7 +45,7 @@ const adminNav: NavItem[] = [
   {label: "Profile", to: "/profile", icon: User, },
 ];
 
-export function getNavIcleartems(role: UserRole): NavItem[] {
+export function getNavItems(role: UserRole): NavItem[] {
   switch (role) {
     case "AGENT":
       return agentNav;
